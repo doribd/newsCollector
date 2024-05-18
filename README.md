@@ -5,7 +5,7 @@ Welcome to the **News Collector** project! This Python application fetches news 
 
 ## 🚀 Features
 
-- Fetches news from AWS (later Azure/GCP) RSS feed URL
+- Fetches news from AWS (see Roadmap below) RSS feed URL
 - Summarizes news articles based on OpenAI
 - Easy configuration through `config.ini` and `.env` files
 
@@ -67,3 +67,7 @@ Contributions are always welcome! To get started, check out `CONTRIBUTING.md` fo
 ## 📄 License
 
 This project is licensed under the MIT License - see the `LICENSE.md` file for details.
+
+## 📄 Roadmap
+
+You can view the project's roadmap [here](ROADMAP.md).
