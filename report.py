@@ -9,7 +9,7 @@ def create_report(entries):
     html_content = """
 <html>
 <head>
-    <title>AWS News from the Last Week</title>
+    <title>AWS News</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,7 +43,7 @@ def create_report(entries):
     </script>
 </head>
 <body>
-    <h1>AWS News from the Last Week</h1>
+    <h1>AWS News</h1>
 """
     for entry in entries:
         html_content += f"""
@@ -60,6 +60,6 @@ def create_report(entries):
     </html>
     """
 
-    with open("aws_news.html", "w", encoding="utf-8") as file:
+    with open("newsBoard.html", "w", encoding="utf-8") as file:
         file.write(html_content)
-    print("The news entries have been saved to aws_news.html")
+    print("The news entries have been saved.")
