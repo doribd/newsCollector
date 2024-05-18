@@ -3,7 +3,7 @@
 
 Welcome to the **News Collector** project! This Python application fetches news feeds from a specified RSS URL and summarizes each news article using a summarization function.
 
-[![Bandit Security Check](https://github.com/doribd/my-repo/actions/workflows/bandit.yml/badge.svg)](https://github.com/doribd/my-repo/actions/workflows/bandit.yml)
+[![Bandit Security Check](https://github.com/doribd/newsCollector/actions/workflows/bandit.yml/badge.svg)](https://github.com/doribd/newsCollector/actions/workflows/bandit.yml)
 
 ## 🚀 Features
 
