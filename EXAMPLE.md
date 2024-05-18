@@ -1,2 +1,2 @@
 <!-- Include x.html content -->
-{% include newsBoard.html %}
+{% include_relative newsBoard.html %}
