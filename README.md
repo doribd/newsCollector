@@ -1,36 +1,69 @@
-# News Collector in Python
 
-This project fetches news feeds from a specified RSS URL and summarizes each news article using a summarization function.
+# 📰 News Collector in Python
 
-## Installation
+Welcome to the **News Collector** project! This Python application fetches news feeds from a specified RSS URL and summarizes each news article using a summarization function.
 
-First, clone the repository to your local workspace:
-Then navigate to the project folder.
-Then Install the required packages:
+## 🚀 Features
 
-```
-pip install -r requirements.txt
-```
+- Fetches news from AWS (later Azure/GCP) RSS feed URL
+- Summarizes news articles based on OpenAI
+- Easy configuration through `config.ini` and `.env` files
 
-## Usage
-You can execute the application by running main.py:
+## 📦 Installation
 
-```
+1. **Clone the repository** to your local workspace:
+    ```sh
+    git clone https://github.com/your_username/news-collector.git
+    ```
+2. **Navigate to the project folder**:
+    ```sh
+    cd news-collector
+    ```
+3. **Install the required packages**:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+## 🛠️ Usage
+
+You can execute the application by running `main.py`:
+
+```sh
 python main.py
 ```
 
-## Configuration
+## ⚙️ Configuration
 
-### config.ini
+### `config.ini`
+
+This file is used to specify the RSS feed URL and the number of days to fetch news for:
+
+```ini
 [RSS]
 url = your_RSS_feed_url
 
 [DAYS]
 num_days = 7
+```
 
-### .env
-OPENAI_API_KEY=your Open AI key
+### `.env`
 
-### Contribution
-Contributions are always welcome! See CONTRIBUTING.md for ways to get started.
+This file stores your OpenAI API key:
 
+```env
+OPENAI_API_KEY=your_openai_api_key
+```
+
+## 🤝 Contribution
+
+Contributions are always welcome! To get started, check out `CONTRIBUTING.md` for guidelines on how to contribute to this project.
+
+1. **Fork the repository**
+2. **Create a new branch**: `git checkout -b feature/your_feature`
+3. **Commit your changes**: `git commit -m 'Add some feature'`
+4. **Push to the branch**: `git push origin feature/your_feature`
+5. **Open a pull request**
+
+## 📄 License
+
+This project is licensed under the MIT License - see the `LICENSE.md` file for details.
