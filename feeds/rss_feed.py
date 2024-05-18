@@ -15,6 +15,7 @@ def __init__(self, url):
 def fetch_parsed_feed(self, filtered_entries):
     """
     Fetching the feed to be parsed.
+    :param self: the class instance
     :param filtered_entries: which is the list of entries to be filtered
     :return: the feed
     """
@@ -25,6 +26,7 @@ def fetch_parsed_feed(self, filtered_entries):
 def process_entry(self, entry, one_week_ago):
     """
     Process single feed.
+    :param self: the class instance
     :param entry: to be processed
     :param one_week_ago: filter date
     :return: dict
