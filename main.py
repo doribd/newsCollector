@@ -1,5 +1,5 @@
+from feeds.AWSFeed import AWSFeed
 from report import create_report
-from rss import fetch_aws_parsed_feed
 
 
 def main():
@@ -10,7 +10,8 @@ def main():
     """
     filtered_entries = []
 
-    fetch_aws_parsed_feed(filtered_entries)
+    aws_feed = AWSFeed(filtered_entries)
+    aws_feed.fetch_parsed_feed()
 
     create_report(filtered_entries)
 

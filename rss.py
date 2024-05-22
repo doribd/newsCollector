@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from summarizer import summarize_text
 
 
-def process_entry(entry, one_week_ago):
+def process_aws_entry(entry, one_week_ago):
     """
     Process single feed.
     :param entry: to be processed
@@ -28,7 +28,7 @@ def process_entry(entry, one_week_ago):
     return None
 
 
-def fetch_parsed_feed(filtered_entries):
+def fetch_aws_parsed_feed(filtered_entries):
     """
     Fetching the feed to be parsed.
 
@@ -38,7 +38,7 @@ def fetch_parsed_feed(filtered_entries):
     config.read('config.ini')
     load_dotenv()
 
-    rss_url = config.get('RSS', 'url')
+    rss_url = config.get('RSS', 'aws_url')
 
     now = datetime.now()
     num_days = config.getint('DAYS', 'num_days')
@@ -51,7 +51,7 @@ def fetch_parsed_feed(filtered_entries):
         exit(1)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = [executor.submit(process_entry, entry, one_week_ago) for entry in feed.entries]
+        futures = [executor.submit(process_aws_entry, entry, one_week_ago) for entry in feed.entries]
 
         for future in concurrent.futures.as_completed(futures):
             result = future.result()

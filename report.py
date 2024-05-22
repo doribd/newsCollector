@@ -60,6 +60,6 @@ def create_report(entries):
     </html>
     """
 
-    with open("newsBoard.html", "w", encoding="utf-8") as file:
+    with open("newsBoard1.html", "w", encoding="utf-8") as file:
         file.write(html_content)
     print("The news entries have been saved.")

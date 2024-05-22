@@ -1,6 +1,6 @@
 from overrides import overrides
 
-from feeds.rss_feed import RSSFeed
+from feeds.RSSFeed import RSSFeed
 
 
 class AzureFeed(RSSFeed):
