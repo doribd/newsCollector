@@ -1,50 +1,52 @@
-def create_report(entries):
+def create_report(entries, feed):
     """
     Creates the html report
 
     :param entries: news which were parsed
+    :param feed: instance of a feed class
     :return: nothing, creates the actual html report file
     """
+    feed_name = feed.get_name()
 
     html_content = """
 <html>
 <head>
-    <title>AWS News</title>
+    <title>{0} News</title>
     <style>
-        body {
+        body {{
             font-family: Arial, sans-serif;
-        }
-        .panel {
+        }}
+        .panel {{
             background-color: #ffffff;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin: 10px 0;
             padding: 10px;
             cursor: pointer;
-        }
-        .panel-title {
+        }}
+        .panel-title {{
             font-size: 18px;
             font-weight: bold;
-        }
-        .panel-content {
+        }}
+        .panel-content {{
             display: none;
             margin-top: 10px;
-        }
+        }}
     </style>
     <script>
-        function togglePanelContent(panel) {
+        function togglePanelContent(panel) {{
             var content = panel.querySelector('.panel-content');
-            if (content.style.display === 'none' || content.style.display === '') {
+            if (content.style.display === 'none' || content.style.display === '') {{
                 content.style.display = 'block';
-            } else {
+            }} else {{
                 content.style.display = 'none';
-            }
-        }
+            }}
+        }}
     </script>
 </head>
 <body>
-    <h1>AWS News</h1>
-"""
+    <h1>{0} News</h1>
+""".format(feed_name)
     for entry in entries:
         html_content += f"""
         <div class="panel" onclick="togglePanelContent(this)">
@@ -57,9 +59,9 @@ def create_report(entries):
     """
     html_content += """
     </body>
-    </html>
+</html>
     """
-
-    with open("newsBoard1.html", "w", encoding="utf-8") as file:
+    filename = f"{feed_name}NewsBoard.html"
+    with open(filename, "w", encoding="utf-8") as file:
         file.write(html_content)
-    print("The news entries have been saved.")
+    print(f"The {feed_name} entries have been saved.")

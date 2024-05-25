@@ -69,3 +69,7 @@ class AWSFeed(RSSFeed):
                     self.filtered_entries.append(result)
 
         return self.filtered_entries
+
+    @staticmethod
+    def get_name():
+        return 'AWS'
