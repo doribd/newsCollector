@@ -47,13 +47,16 @@ def create_report(entries, feed):
 <body>
     <h1>{0} News</h1>
 """.format(feed_name)
+
+    entry_key = feed.get_entry_key()
+
     for entry in entries:
         html_content += f"""
         <div class="panel" onclick="togglePanelContent(this)">
             <div class="panel-title">{entry['title']}</div>
             <div class="panel-content">
                 <p><strong>Link:</strong> <a href="{entry['link']}">{entry['link']}</a></p>
-                <p><strong>AI Summary:</strong> {entry['summary']}</p>
+                <p><strong>AI Summary:</strong> {entry[entry_key]}</p>
             </div>
         </div>
     """

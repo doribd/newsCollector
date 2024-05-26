@@ -28,3 +28,6 @@ class RSSFeed(ABC):
         :return: dict
         """
         pass
+
+    def get_entry_key(self):
+        return 'summary'

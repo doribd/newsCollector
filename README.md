@@ -38,14 +38,24 @@ python main.py
 
 ### `config.ini`
 
-This file is used to specify the RSS feed URL and the number of days to fetch news for:
+This file is used to specify the RSS feed URL and the number of days to fetch news for.
+You can also specify the OpenAI model and its parameters:
+
+### `config.ini`
 
 ```ini
 [RSS]
-url = your_RSS_feed_url
+aws_url=https://aws.amazon.com/about-aws/whats-new/recent/feed/
+azure_url=https://azurecomcdn.azureedge.net/en-us/updates/feed/
 
 [DAYS]
-num_days = 7
+num_days=7
+
+[OPENAI]
+model=gpt-3.5-turbo
+temperature=0.5
+max_tokens=64
+top_p=1
 ```
 
 ### `.env`
