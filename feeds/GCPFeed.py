@@ -1,4 +1,3 @@
-import concurrent.futures
 from configparser import ConfigParser
 from datetime import datetime, timedelta
 from datetime import timezone
@@ -66,15 +65,7 @@ class GCPFeed(RSSFeed):
             print("Failed to parse the RSS feed.")
             exit(1)
 
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = [executor.submit(self.process_entry, entry, one_week_ago) for entry in feed.entries]
-
-            for future in concurrent.futures.as_completed(futures):
-                result = future.result()
-                if result:
-                    self.filtered_entries.append(result)
-
-        return self.filtered_entries
+        return self.process_entries(feed.entries, one_week_ago)
 
     @staticmethod
     def get_name():

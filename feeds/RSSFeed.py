@@ -1,3 +1,4 @@
+import concurrent.futures
 from abc import ABC, abstractmethod
 
 
@@ -28,6 +29,17 @@ class RSSFeed(ABC):
         :return: dict
         """
         pass
+
+    def process_entries(self, entries, one_week_ago):
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = [executor.submit(self.process_entry, entry, one_week_ago) for entry in entries]
+
+            for future in concurrent.futures.as_completed(futures):
+                result = future.result()
+                if result:
+                    self.filtered_entries.append(result)
+
+        return self.filtered_entries
 
     def get_entry_key(self):
         return 'summary'

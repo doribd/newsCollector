@@ -4,10 +4,9 @@ This document outlines the planned features and improvements for the **News Coll
 
 ## Upcoming Features
 
-### Version 1.1
+### Version 1.0
 
 - **Advanced Summarization**: Improve the summarization algorithm to provide more concise and accurate summaries.
-- **Multi-Cloud Support**: Enable support for fetching and summarizing news from Azure.
 - **GUI Application**: Develop a simple graphical user interface for users who prefer not to use the command line.
 
 ## Contributing to the Roadmap
