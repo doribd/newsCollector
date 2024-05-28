@@ -1,33 +1,33 @@
-from datetime import datetime
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 
 from feeds.AWSFeed import AWSFeed
 from feeds.AzureFeed import AzureFeed
 from feeds.GCPFeed import GCPFeed
 from report import create_report
 
+app = FastAPI()
 
-def main():
-    """
-    Collecting news from aws, summarize it using OpenAI and creates a html table.
 
-    :return: creates a html table file.
-    """
-
-    filtered_entries = []
-    gcp_feed = GCPFeed(filtered_entries)
-    gcp_feed.fetch_parsed_feed()
-    create_report(filtered_entries, gcp_feed)
-
+@app.get("/aws", response_class=HTMLResponse)
+def aws_report():
     filtered_entries = []
     aws_feed = AWSFeed(filtered_entries)
     aws_feed.fetch_parsed_feed()
-    create_report(filtered_entries, aws_feed)
+    return create_report(filtered_entries, aws_feed)
 
+
+@app.get("/gcp", response_class=HTMLResponse)
+def gcp_report():
+    filtered_entries = []
+    gcp_feed = GCPFeed(filtered_entries)
+    gcp_feed.fetch_parsed_feed()
+    return create_report(filtered_entries, gcp_feed)
+
+
+@app.get("/azure", response_class=HTMLResponse)
+def azure_report():
     filtered_entries = []
     azure_feed = AzureFeed(filtered_entries)
     azure_feed.fetch_parsed_feed()
-    create_report(filtered_entries, azure_feed)
-
-
-if __name__ == '__main__':
-    main()
+    return create_report(filtered_entries, azure_feed)

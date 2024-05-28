@@ -1,3 +1,6 @@
+from fastapi.responses import HTMLResponse
+
+
 def create_report(entries, feed):
     """
     Creates the html report
@@ -68,3 +71,5 @@ def create_report(entries, feed):
     with open(filename, "w", encoding="utf-8") as file:
         file.write(html_content)
     print(f"The {feed_name} entries have been saved.")
+
+    return HTMLResponse(content=html_content)
