@@ -34,9 +34,11 @@ You can execute the application by running `main.py`:
 python main.py
 ```
 Once the application is running, you can access the following APIs in your browser:  
+```bazaar
 AWS News Report: http://localhost:8000/aws
 Azure News Report: http://localhost:8000/azure
 GCP News Report: http://localhost:8000/gcp
+```
 Each API will fetch the respective news feed, summarize the articles, and display the report in your browser. 
 
 ## ⚙️ Configuration
