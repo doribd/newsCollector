@@ -28,11 +28,17 @@ Welcome to the **News Collector** project! This Python application fetches news 
 
 ## 🛠️ Usage
 
-You can execute the application by running `main.py`:
+You can execute the application by running `main.py` (CLI):
 
 ```sh
 python main.py
+
+Or you can run the application using the FastAPI server:
+
+```sh
+uvicorn main:app --reload
 ```
+
 Once the application is running, you can access the following APIs in your browser:  
 ```bazaar
 AWS News Report: http://localhost:8000/aws
@@ -72,6 +78,14 @@ This file stores your OpenAI API key:
 ```env
 OPENAI_API_KEY=your_openai_api_key
 ```
+## 🔒 Security
+
+This project uses the following open source Static Application Security Testing (SAST) tools to ensure the quality and security of the code:
+
+- **bandit**: designed to find common security issues in Python code.
+- **pip-audit**: scanning Python environments for packages with known vulnerabilities. It uses the Python Packaging Advisory Database.
+
+These tools help us maintain high standards of code quality and security. They scan our codebase for common security vulnerabilities and coding errors, and provide feedback that we use to improve our code.
 
 ## 🤝 Contribution
 

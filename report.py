@@ -1,3 +1,5 @@
+import logging
+
 from fastapi.responses import HTMLResponse
 
 
@@ -67,9 +69,10 @@ def create_report(entries, feed):
     </body>
 </html>
     """
+    logging.info("Starting report creation")
     filename = f"{feed_name}NewsBoard.html"
     with open(filename, "w", encoding="utf-8") as file:
         file.write(html_content)
-    print(f"The {feed_name} entries have been saved.")
+    logging.info(f"The {feed_name} entries have been saved.")
 
     return HTMLResponse(content=html_content)

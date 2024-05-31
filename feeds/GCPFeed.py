@@ -1,3 +1,4 @@
+import logging
 from configparser import ConfigParser
 from datetime import datetime, timedelta
 from datetime import timezone
@@ -56,12 +57,13 @@ class GCPFeed(RSSFeed):
         num_days = config.getint('DAYS', 'num_days')
         one_week_ago = now - timedelta(days=num_days)
 
-        response = requests.get(rss_url)
+        response = requests.get(rss_url, timeout=5)
         response.encoding = 'utf-8'  # Force utf-8 encoding
         feed_data = response.text
 
         feed = feedparser.parse(feed_data)
         if feed.bozo:
+            logging.error("Failed to parse the RSS feed.")
             print("Failed to parse the RSS feed.")
             exit(1)
 

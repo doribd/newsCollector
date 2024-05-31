@@ -42,4 +42,8 @@ class RSSFeed(ABC):
         return self.filtered_entries
 
     def get_entry_key(self):
+        """
+        Get entry key
+        :return: summary as the default key
+        """
         return 'summary'

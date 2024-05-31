@@ -1,3 +1,4 @@
+import logging
 from configparser import ConfigParser
 from datetime import datetime, timedelta, timezone
 
@@ -64,6 +65,7 @@ class AzureFeed(RSSFeed):
         feed = feedparser.parse(rss_url)
 
         if feed.bozo:
+            logging.error("Failed to parse the RSS feed.")
             print("Failed to parse the RSS feed.")
             exit(1)
 
