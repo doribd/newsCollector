@@ -82,6 +82,20 @@ This file stores your OpenAI API key:
 OPENAI_API_KEY=your_openai_api_key
 ```
 
+## 🚦 Rate Limiting
+
+To ensure fair usage and prevent any single user or client from consuming too many resources or making too many requests in a short amount of time, I have implemented rate limiting.
+
+Each cloud endpoint (AWS, Azure, and GCP) has a rate limit of 1 request per minute. This means that each client can make up to 1 request per minute to each endpoint.
+
+Here are the rate-limited endpoints:
+
+- AWS News Report: http://localhost:8000/aws
+- Azure News Report: http://localhost:8000/azure
+- GCP News Report: http://localhost:8000/gcp
+
+If a client exceeds this limit, they will receive a `429 Too Many Requests` response until enough time has passed for the rate limit to reset.
+
 ## 🔒 Security
 
 This project uses the following open source Static Application Security Testing (SAST) tools to ensure the quality and
