@@ -10,6 +10,7 @@ from overrides import overrides
 
 from feeds.RSSFeed import RSSFeed
 from summarizer import summarize_text
+from summarizers.OpenAISummarizer import OpenAISummarizer
 
 
 class GCPFeed(RSSFeed):
@@ -19,6 +20,8 @@ class GCPFeed(RSSFeed):
 
     def __init__(self, filtered_entries):
         super().__init__(filtered_entries)
+        self.summarizer = OpenAISummarizer()
+
 
     @overrides
     def process_entry(self, entry, one_week_ago):
@@ -32,7 +35,7 @@ class GCPFeed(RSSFeed):
         now = datetime.now(timezone.utc)
         one_week_ago = now - timedelta(days=7)
         if updated_date >= one_week_ago:
-            content_type = summarize_text(entry['content'])
+            content_type = self.summarizer.summarize_text(entry['content'])
             return {
                 'title': entry.title,
                 'link': entry.link,

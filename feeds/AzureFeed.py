@@ -9,6 +9,7 @@ from pytz import timezone
 
 from feeds.RSSFeed import RSSFeed
 from summarizer import summarize_text
+from summarizers.OpenAISummarizer import OpenAISummarizer
 
 
 class AzureFeed(RSSFeed):
@@ -18,6 +19,7 @@ class AzureFeed(RSSFeed):
 
     def __init__(self, url):
         super().__init__(url)
+        self.summarizer = OpenAISummarizer()
 
     @overrides
     def process_entry(self, entry, one_week_ago):
@@ -35,7 +37,7 @@ class AzureFeed(RSSFeed):
         one_week_ago = one_week_ago.replace(tzinfo=utc)
 
         if published_date >= one_week_ago:
-            summary = summarize_text(entry.summary)
+            summary = self.summarizer.summarize_text(entry.summary)
             return {
                 'title': entry.title,
                 'link': entry.link,

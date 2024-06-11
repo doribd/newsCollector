@@ -8,6 +8,7 @@ from overrides import overrides
 
 from feeds.RSSFeed import RSSFeed
 from summarizer import summarize_text
+from summarizers.OpenAISummarizer import OpenAISummarizer
 
 
 class AWSFeed(RSSFeed):
@@ -17,6 +18,8 @@ class AWSFeed(RSSFeed):
 
     def __init__(self, filtered_entries):
         super().__init__(filtered_entries)
+        self.summarizer = OpenAISummarizer()
+
 
     @overrides
     def process_entry(self, entry, one_week_ago):
@@ -29,7 +32,7 @@ class AWSFeed(RSSFeed):
         published_date = datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z')
 
         if published_date >= one_week_ago:
-            summary = summarize_text(entry.summary)
+            summary = self.summarizer.summarize_text(entry.summary)
             return {
                 'title': entry.title,
                 'link': entry.link,

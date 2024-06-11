@@ -1,6 +1,5 @@
 import logging
 
-import limiter
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 
@@ -34,18 +33,15 @@ def generate_report(feed_class, feed_name):
 
 
 @app.get("/aws", response_class=HTMLResponse)
-@limiter.limit("1/minute")
 def aws_report():
     return generate_report(AWSFeed, "AWS")
 
 
 @app.get("/gcp", response_class=HTMLResponse)
-@limiter.limit("1/minute")
 def gcp_report():
     return generate_report(GCPFeed, "GCP")
 
 
 @app.get("/azure", response_class=HTMLResponse)
-@limiter.limit("1/minute")
 def azure_report():
     return generate_report(AzureFeed, "Azure")
